@@ -15,7 +15,6 @@ class TestGame(unittest.TestCase):
         # Возможная вариация поле во время игры(с ничьёй)
         self.display_four = [["1", "1", "0"], ["0", "0", "1"], ["1", "0", "1"]]
 
-
     def test_valid_input(self):
         # Проверка корректного ввода
         self.assertTrue(self.game.validate_input('1 2'))
@@ -23,13 +22,18 @@ class TestGame(unittest.TestCase):
         self.assertTrue(self.game.validate_input(' 2   1  '))
         self.assertTrue(self.game.validate_input('1   3  '))
 
-
     def test_invalid_input(self):
         # Проверка некорректного ввода
         self.assertFalse(self.game.validate_input('1 4'))
         self.assertFalse(self.game.validate_input('4 3'))
         self.assertFalse(self.game.validate_input('1 2 \n'))
         self.assertFalse(self.game.validate_input('1 2 \t'))
+
+    def test_get_step(self):
+        # Проверка получения правильных координат
+        self.assertEqual(self.game.get_step('1 1'), [0, 0])
+        self.assertEqual(self.game.get_step('1 2'), [0, 1])
+        self.assertEqual(self.game.get_step('3 2'), [2, 1])
 
     def test_check_step(self):
         # Проверка тестов на первом поле(display_one)

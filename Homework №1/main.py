@@ -36,7 +36,8 @@ class TicTacGame():
 
 
     def get_step(self, step):
-        coordinates = [int(step[0]) - 1, int(step[2]) - 1]
+        step = step.replace(' ', '')
+        coordinates = [int(step[0]) - 1, int(step[1]) - 1]
         return coordinates
 
 
