@@ -3,7 +3,6 @@ class TicTacGame():
         self.display = [["*", "*", "*"], ["*", "*", "*"], ["*", "*", "*"]]
         self.players = []
 
-
     def show_board(self, display):
         for i in range(3):
             for j in range(3):
@@ -12,7 +11,6 @@ class TicTacGame():
                 else:
                     print(display[i][j])
 
-
     def start_play(self):
         print("Это игра КРЕСТИКИ-НОЛИКИ!")
         print("Введите имя первого игрока:")
@@ -20,9 +18,9 @@ class TicTacGame():
         print("Введите имя второго игрока:")
         name2 = input()
         print("Первый игрок ходит единицами; Второй - ноликами")
-        print("Вводите координаты ячеек куда хотите сходить по примеру: 1 строка 2 столбец - '1 2'")
+        print("Вводите координаты ячеек куда хотите сходить по примеру: "
+              "1 строка 2 столбец - '1 2'")
         self.players = [name1, name2]
-
 
     def validate_input(self, step):
         step = step.replace(' ', '')
@@ -34,18 +32,15 @@ class TicTacGame():
         else:
             return False
 
-
     def get_step(self, step):
         step = step.replace(' ', '')
         coordinates = [int(step[0]) - 1, int(step[1]) - 1]
         return coordinates
 
-
     def check_step(self, display, x, y):
         if display[x][y] == "*":
             return True
         return False
-
 
     def start_game(self):
         Game = True
@@ -87,7 +82,6 @@ class TicTacGame():
 
         print("Конец Игры")
 
-
     def check_winner(self, display):
         for i in range(3):
             if display[i][0] == display[i][1] == display[i][2] != "*":
@@ -102,14 +96,12 @@ class TicTacGame():
 
         return False
 
-
     def check_draw(self, display):
         for i in range(3):
             for j in range(3):
                 if display[i][j] == "*":
                     return False
         return True
-
 
     def print_win(self, player):
         if player == 0:

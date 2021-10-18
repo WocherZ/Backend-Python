@@ -7,13 +7,21 @@ class TestGame(unittest.TestCase):
         # Экземпляр игры
         self.game = TicTacGame()
         # Стартовое поле
-        self.display_one = [["*", "*", "*"], ["*", "*", "*"], ["*", "*", "*"]]
+        self.display_one = [["*", "*", "*"],
+                            ["*", "*", "*"],
+                            ["*", "*", "*"]]
         # Возможная вариация поле во время игры(без победы)
-        self.display_two = [["1", "0", "1"], ["*", "0", "*"], ["0", "*", "1"]]
+        self.display_two = [["1", "0", "1"],
+                            ["*", "0", "*"],
+                            ["0", "*", "1"]]
         # Возможная вариация поле во время игры(с победой одного из игроков)
-        self.display_three = [["1", "*", "0"], ["*", "1", "0"], ["*", "0", "1"]]
+        self.display_three = [["1", "*", "0"],
+                              ["*", "1", "0"],
+                              ["*", "0", "1"]]
         # Возможная вариация поле во время игры(с ничьёй)
-        self.display_four = [["1", "1", "0"], ["0", "0", "1"], ["1", "0", "1"]]
+        self.display_four = [["1", "1", "0"],
+                             ["0", "0", "1"],
+                             ["1", "0", "1"]]
 
     def test_valid_input(self):
         # Проверка корректного ввода
@@ -46,7 +54,8 @@ class TestGame(unittest.TestCase):
         self.assertTrue(self.game.check_step(self.display_two, 1, 0))
 
     def test_check_winner(self):
-        # Проверка тестов проверки победителя(1,2 поле - нет победы; 3 поле - победа)
+        # Проверка тестов проверки победителя
+        # 1,2 поле - нет победы; 3 поле - победа
         self.assertFalse(self.game.check_winner(self.display_one))
         self.assertFalse(self.game.check_winner(self.display_two))
         self.assertTrue(self.game.check_winner(self.display_three))
