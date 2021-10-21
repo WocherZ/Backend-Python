@@ -27,15 +27,15 @@ class TestGame(unittest.TestCase):
         # Проверка корректного ввода
         self.assertTrue(self.game.validate_input('1 2'))
         self.assertTrue(self.game.validate_input('2 1'))
-        self.assertTrue(self.game.validate_input(' 2   1  '))
-        self.assertTrue(self.game.validate_input('1   3  '))
+        self.assertTrue(self.game.validate_input(' 2 1  '))
+        self.assertTrue(self.game.validate_input('1 3  '))
 
     def test_invalid_input(self):
         # Проверка некорректного ввода
         self.assertFalse(self.game.validate_input('1 4'))
         self.assertFalse(self.game.validate_input('4 3'))
-        self.assertFalse(self.game.validate_input('1 2 \n'))
-        self.assertFalse(self.game.validate_input('1 2 \t'))
+        self.assertFalse(self.game.validate_input('abcd'))
+        self.assertFalse(self.game.validate_input('1a2'))
 
     def test_get_step(self):
         # Проверка получения правильных координат
