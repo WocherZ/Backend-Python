@@ -6,7 +6,7 @@ class CustomList(list):
         super().__init__()
         self.data = array.copy()
 
-    def __str__(self):
+    def __str__(self):  # строковое представление
         return str(self.data)
 
     def __getitem__(self, item):  # оператор индексирования
@@ -19,119 +19,209 @@ class CustomList(list):
         self.data[key] = value
 
     def __add__(self, other):  # оператор сложения если объект - операнд слева
-        print("Вызвался оператор сложения слева")
-        other = other.copy()
         result = []
-        max_size = max(len(self.data), len(other))
+        first = CustomList(self.data)
+        if type(other) == list:
+            second = CustomList(other)
+        else:
+            second = CustomList(other.data)
+        # first и second - два кастомных листа на основе операндов
+        max_size = max(len(first), len(second))
 
-        if len(self.data) < max_size:
-            self.extend(max_size)
-        elif len(other) < max_size:
-            if type(other) == list:
-                for i in range(max_size - len(other)):
-                    other.append(0)
-            else:
-                other.extend(max_size)
+        if len(first) < max_size:
+            first.extend(max_size)
+        elif len(second) < max_size:
+            second.extend(max_size)
 
         for i in range(max_size):
-            result.append(self.data[i] + other[i])
+            result.append(first[i] + second[i])
 
         return CustomList(result)
 
     def __radd__(self, other):  # оператор сложения если объект - операнд справа
-        print("Вызвался оператор сложения справа")
-        other = other.copy()
         result = []
-        max_size = max(len(self.data), len(other))
+        first = CustomList(self.data)
+        if type(other) == list:
+            second = CustomList(other)
+        else:
+            second = CustomList(other.data)
+        # first и second - два кастомных листа на основе операндов
+        max_size = max(len(first), len(second))
 
-        if len(self.data) < max_size:
-            self.extend(max_size)
-        elif len(other) < max_size:
-            if type(other) == list:
-                for i in range(max_size-len(other)):
-                    other.append(0)
-            else:
-                other.extend(max_size)
+        if len(first) < max_size:
+            first.extend(max_size)
+        elif len(second) < max_size:
+            second.extend(max_size)
 
         for i in range(max_size):
-            result.append(self.data[i] + other[i])
+            result.append(first[i] + second[i])
 
         return CustomList(result)
 
-    def __sub__(self, other):
-        print("Вызвался оператор вычитания слева")
-        other = other.copy()
+    def __sub__(self, other):  # оператор вычитания если объект - операнд слева
         result = []
-        max_size = max(len(self.data), len(other))
+        first = CustomList(self.data)
+        if type(other) == list:
+            second = CustomList(other)
+        else:
+            second = CustomList(other.data)
+        # first и second - два кастомных листа на основе операндов
+        max_size = max(len(first), len(second))
 
-        if len(self.data) < max_size:
-            self.extend(max_size)
-        elif len(other) < max_size:
-            if type(other) == list:
-                for i in range(max_size - len(other)):
-                    other.append(0)
-            else:
-                other.extend(max_size)
+        if len(first) < max_size:
+            first.extend(max_size)
+        elif len(second) < max_size:
+            second.extend(max_size)
 
         for i in range(max_size):
-            result.append(self.data[i] - other[i])
+            result.append(first[i] - second[i])
 
         return CustomList(result)
 
-    def __rsub__(self, other):
-        print("Вызвался оператор вычитания справа")
-        other = other.copy()
+    def __rsub__(self, other):  # оператор вычитания если объект - операнд справа
         result = []
-        max_size = max(len(self.data), len(other))
+        first = CustomList(self.data)
+        if type(other) == list:
+            second = CustomList(other)
+        else:
+            second = CustomList(other.data)
+        # first и second - два кастомных листа на основе операндов
+        max_size = max(len(first), len(second))
 
-        if len(self.data) < max_size:
-            self.extend(max_size)
-        elif len(other) < max_size:
-            if type(other) == list:
-                for i in range(max_size - len(other)):
-                    other.append(0)
-            else:
-                other.extend(max_size)
+        if len(first) < max_size:
+            first.extend(max_size)
+        elif len(second) < max_size:
+            second.extend(max_size)
 
         for i in range(max_size):
-            result.append(other[i] - self.data[i])
+            result.append(second[i] - first[i])
 
         return CustomList(result)
+
+    def __iadd__(self, other):  # оператор +=
+        result = []
+        first = CustomList(self.data)
+        if type(other) == list:
+            second = CustomList(other)
+        else:
+            second = CustomList(other.data)
+        # first и second - два кастомных листа на основе операндов
+        max_size = max(len(first), len(second))
+
+        if len(first) < max_size:
+            first.extend(max_size)
+        elif len(second) < max_size:
+            second.extend(max_size)
+
+        for i in range(max_size):
+            result.append(first[i] + second[i])
+
+        return CustomList(result)
+
+    def __isub__(self, other):  # оператор -=
+        result = []
+        first = CustomList(self.data)
+        if type(other) == list:
+            second = CustomList(other)
+        else:
+            second = CustomList(other.data)
+        # first и second - два кастомных листа на основе операндов
+        max_size = max(len(first), len(second))
+
+        if len(first) < max_size:
+            first.extend(max_size)
+        elif len(second) < max_size:
+            second.extend(max_size)
+
+        for i in range(max_size):
+            result.append(first[i] - second[i])
+
+        return CustomList(result)
+
+    def __lt__(self, other):  # оператор <
+        if type(other) == list:
+            second = CustomList(other)
+        else:
+            second = other
+
+        if self.sum() < second.sum():
+            return True
+        else:
+            return False
+
+    def __gt__(self, other):  # оператор >
+        if type(other) == list:
+            second = CustomList(other)
+        else:
+            second = other
+
+        if self.sum() > second.sum():
+            return True
+        else:
+            return False
+
+    def __le__(self, other):  # оператор <=
+        if type(other) == list:
+            second = CustomList(other)
+        else:
+            second = other
+
+        if self.sum() <= second.sum():
+            return True
+        else:
+            return False
+
+    def __ge__(self, other):  # оператор >=
+        if type(other) == list:
+            second = CustomList(other)
+        else:
+            second = other
+
+        if self.sum() >= second.sum():
+            return True
+        else:
+            return False
+
+    def sum(self):  # сумма элементов
+        result = 0
+        for i in range(len(self.data)):
+            result += self.data[i]
+        return result
 
     def extend(self, size):  # дополнение нулями  листа
         if len(self.data) < size:
             for i in range(size - len(self.data)):
                 self.data.append(0)
-        print("CustomList после добавления: ", self.data)
 
-    def __del__(self):
+    def __del__(self):  # удаление
         del self.data
 
 
 
+if __name__ == '__main__':
 
-ar = [1, 2, 3]
-example = CustomList(ar)
-ar.append(7)
-example1 = CustomList(ar)
-print("Первый список: ", example)  # [1, 2, 3]
-print("Второй список: ", example1)  # [1, 2, 3, 7]
+    ar = [1, 2, 3, 7]
+    example = CustomList(ar)
+    ar = [1, 2, 3]
+    example1 = CustomList(ar)
+    print("Первый список: ", example)  # [1, 2, 3]
+    print("Второй список: ", example1)  # [1, 2, 3, 7]
+    print("Сложение первого со вторым: ", end="")
+    res = example + example1
+    print(res)
 
-print("Сложение первого со вторым: ", end="")
-res = example + example1
-print(res)
+    print("Сложение второго с первым: ", end="")
+    res = example + example1
+    print(res)
 
-print("Сложение второго с первым: ", end="")
-res = example + example1
-print(res)
+    print("Вычитание из второго первого: ", end="")
+    res = example - example1
+    print(res)
 
-print("Вычитание из второго первого: ", end="")
-res = example - example1
-print(res)
+    print("Вычитание из первого второго: ", end="")
+    res = example1 - example
+    print(res)
 
-print("Вычитание из первого второго: ", end="")
-res = example1 - example
-print(res)
+    print("Первый список: ", example)  # [1, 2, 3]
+    print("Второй список: ", example1)  # [1, 2, 3, 7]
 
-print("Первый список: ", example)  # [1, 2, 3]
-print("Второй список: ", example1)  # [1, 2, 3, 7]
