@@ -1,6 +1,3 @@
-import copy
-
-
 class CustomList(list):
     def __init__(self, array):
         super().__init__()
@@ -200,8 +197,10 @@ class CustomList(list):
 
 if __name__ == '__main__':
 
-    ar = [1, 2, 3, 7]
+    ar = [1, 2, 3]
     example = CustomList(ar)
+    print(example.extend(5))
+    print()
     ar = [1, 2, 3]
     example1 = CustomList(ar)
     print("Первый список: ", example)  # [1, 2, 3]
