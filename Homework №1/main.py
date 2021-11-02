@@ -1,12 +1,23 @@
 class TicTacGame():
     def __init__(self):
+        self.field_size = 3
         self.display = [["*", "*", "*"], ["*", "*", "*"], ["*", "*", "*"]]
         self.players = []
         self.game = False
+        self.win_combs = (
+            ((0, 0), (0, 1), (0, 2)),
+            ((1, 0), (1, 1), (1, 2)),
+            ((2, 0), (2, 1), (2, 2)),
+            ((0, 0), (1, 0), (2, 0)),
+            ((0, 1), (1, 1), (2, 1)),
+            ((0, 2), (1, 2), (2, 2)),
+            ((0, 0), (1, 1), (2, 2)),
+            ((2, 0), (1, 1), (0, 2))
+            )
 
     def show_board(self, display):
-        for i in range(3):
-            for j in range(3):
+        for i in range(self.field_size):
+            for j in range(self.field_size):
                 if j != 2:
                     print(display[i][j], end='')
                 else:
@@ -81,27 +92,22 @@ class TicTacGame():
         print("Конец Игры")
 
     def check_winner(self, display):
-        if self.check_line(display[1][1], display[2][0], display[0][2]):
-            return True
-        if self.check_line(display[1][1], display[0][0], display[2][2]):
-            return True
-
-        for i in range(3):
-            if self.check_line(display[i][0], display[i][1], display[i][2]):
+        for win_comb in self.win_combs:
+            last_field = 0
+            k = 1
+            for field in win_comb:
+                current_field = display[field[0]][field[1]]
+                if last_field and last_field != current_field or current_field == "*":
+                    k = 0
+                    break
+                last_field = current_field
+            if k:
                 return True
-            if self.check_line(display[0][i], display[1][i], display[2][i]):
-                return True
-
-        return False
-
-    def check_line(self, e1, e2, e3):
-        if e1 == e2 == e3 != "*":
-            return True
         return False
 
     def check_draw(self, display):
-        for i in range(3):
-            for j in range(3):
+        for i in range(self.field_size):
+            for j in range(self.field_size):
                 if display[i][j] == "*":
                     return False
         return True
