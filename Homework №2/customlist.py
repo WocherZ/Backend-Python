@@ -203,8 +203,8 @@ if __name__ == '__main__':
     print()
     ar = [1, 2, 3]
     example1 = CustomList(ar)
-    print("Первый список: ", example)  # [1, 2, 3]
-    print("Второй список: ", example1)  # [1, 2, 3, 7]
+    print("Первый список: ", example)
+    print("Второй список: ", example1)
     print("Сложение первого со вторым: ", end="")
     res = example + example1
     print(res)
@@ -221,6 +221,5 @@ if __name__ == '__main__':
     res = example1 - example
     print(res)
 
-    print("Первый список: ", example)  # [1, 2, 3]
-    print("Второй список: ", example1)  # [1, 2, 3, 7]
-
+    print("Первый список: ", example)
+    print("Второй список: ", example1)
