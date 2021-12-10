@@ -1,0 +1,21 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+img {
+    margin: 0 auto;
+    text-align: center;
+}
+
+h2, h3 {
+    font-size: 28px;
+    color: #7c795d;
+    line-height: 36px;
+    width: 400px;
+    font-weight: bold;
+    background-color: #fff4a3;
+    border-radius: 7px;
+    margin: 3 auto;
+    text-align: center;
+}
+

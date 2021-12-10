@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" href="{% static 'css/product.css' %}" rel="stylesheet">
+    <title>Product №{{ product_number }}</title>
+</head>
+<body>
+    <div class="wrapper">
+        {% if image_link %}
+            <img src="{% static 'images/1.jpg' %}">
+        {% endif %}
+        <h2>{{ product_name }}</h2>
+        <h3>{{ product_category }}</h3>
+    </div>
+</body>
+</html>
