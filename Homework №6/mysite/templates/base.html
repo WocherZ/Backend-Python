@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+    <title>Title</title>
+    {% endblock %}
+    <link href="{% static '/css/styles.css' %}" rel="stylesheet">
+    {% block files %}
+    {% endblock %}
+</head>
+<body>
+    <div class="header">
+        <ul>
+            <li>
+                <a href="{% url 'shop_page'%}">Страница магазина</a>
+            </li>
+            <li>
+                <a href="{% url 'category_list'%}">Список категорий</a>
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

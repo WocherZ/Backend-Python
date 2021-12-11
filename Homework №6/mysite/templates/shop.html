@@ -1,15 +1,17 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+
+{% block title %}
+    <title>Главная страница магазина</title>
+{% endblock %}
+
+{% block files %}
     <link type="text/css" href="{% static 'css/shop.css' %}" rel="stylesheet"/>
-    <title>Hello Django</title>
-</head>
-<body>
+{% endblock %}
+
+{% block content %}
     <h1>Main page of shop</h1>
     <h2>This page is template</h2>
     <p>{{ info }}</p>
     <p>{{ links }}</p>
-</body>
-</html>
+{% endblock %}
