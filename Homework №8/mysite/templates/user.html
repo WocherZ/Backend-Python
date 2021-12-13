@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    <title>User page</title>
+{% endblock %}
+
+{% block files %}
+    <link type="text/css" href="{% static 'css/user.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+    <h1>Main user page</h1>
+    <h2>This page is template</h2>
+    <h3>There will be information about user</h3>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Добавление</title>
+{% endblock %}
+
+{% block files %}
+    <link type="text/css" href="{% static 'css/user.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+    <h2>On this page you can add product</h2>
+    <div>
+        <form method="post">
+            {{ form.product_name }}<br>
+            {{ form.category }}<br>
+            {{ form.description }}<br>
+            {{ form.product_image }}<br>
+            <button type="submit">Добавить продукт</button>
+            <span>{{ error }}</span>
+        </form>
+    </div>
+{% endblock %}

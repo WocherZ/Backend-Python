@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    <title>{{ product_name }}</title>
+{% endblock %}
+
+{% block files %}
+    <link type="text/css" href="{% static 'css/product.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+    <div class="wrapper">
+        {% if image_link %}
+            <img src="{% static 'images/1.jpg' %}">
+        {% endif %}
+        <h2>{{ product_name }}</h2>
+        <h3>{{ product_category }}</h3>
+    </div>
+{% endblock %}
+

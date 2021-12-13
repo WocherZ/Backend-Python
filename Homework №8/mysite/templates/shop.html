@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Главная страница магазина</title>
+{% endblock %}
+
+{% block files %}
+    <link type="text/css" href="{% static 'css/shop.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+    <h1>Main page of shop</h1>
+    <ul>
+        <li>
+            <a href="{% url 'add_product'%}">Добавить продукт</a>
+        </li>
+<!--        <li>-->
+<!--            <a href="{% url 'update_product'%}">Изменить продукт</a>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <a href="{% url 'delete_product'%}">Удалить продукт</a>-->
+<!--        </li>-->
+    </ul>
+{% endblock %}
